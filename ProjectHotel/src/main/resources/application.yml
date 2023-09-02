@@ -1,0 +1,29 @@
+
+# Configuração do Banco de Dados
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/System_Hotels
+    username: postgres
+    password: 041199
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    baselineOnMigrate: true
+    check-location: true
+    locations: classpath:db/migration
+    schemas: public
+    enabled: true
+
+# Configuração do Servidor Web
+server:
+  port: 8080
+  error:
+    include-stacktrace: never
