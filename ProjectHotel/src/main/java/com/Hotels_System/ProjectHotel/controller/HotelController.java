@@ -28,7 +28,7 @@ public class HotelController {
 
     @PostMapping("/register")
     public ResponseEntity<Hotel> register(@RequestBody @Valid DTOHotel dtoHotel, UriComponentsBuilder uriComponentsBuilder ){
-        Hotel hotel = service.register(dtoHotel);
+        var hotel = service.register(dtoHotel);
 
         URI uri = uriComponentsBuilder.path("/hotel/{id}").buildAndExpand(hotel.getId()).toUri();
 

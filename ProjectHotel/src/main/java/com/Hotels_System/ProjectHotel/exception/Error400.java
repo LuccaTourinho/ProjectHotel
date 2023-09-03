@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class Error400 {
 
-    @ExceptionHandler(MetaDataAccessException.class)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity treatInvalidData(MethodArgumentNotValidException ex){
         var errors = ex.getFieldErrors();
 

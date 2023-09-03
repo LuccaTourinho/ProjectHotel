@@ -8,10 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "room")
-@Table(name = "Rooms",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "unique_hotel_number", columnNames = {"hotel_id", "number"})
-        })
+@Table(name = "Rooms")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,5 +34,6 @@ public class Room {
         this.hotel = dtoRoom.hotel();
         this.capacity = Capacity.valueOf(dtoRoom.capacity());
         this.number = dtoRoom.number();
+        this.available = true;
     }
 }

@@ -5,6 +5,7 @@ import com.Hotels_System.ProjectHotel.dto.DTORoom;
 import com.Hotels_System.ProjectHotel.dto.DTORoomUpdate;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
 import com.Hotels_System.ProjectHotel.exception.RoomNotFoundException;
+import com.Hotels_System.ProjectHotel.repository.HotelRepository;
 import com.Hotels_System.ProjectHotel.repository.RoomRepository;
 import com.Hotels_System.ProjectHotel.util.RoomUpdater;
 import jakarta.transaction.Transactional;
@@ -21,6 +22,9 @@ public class RoomService {
     @Autowired
     private RoomRepository repository;
 
+    @Autowired
+    private HotelRepository hotelrepository;
+
     @Transactional
     public Room register(DTORoom dtoRoom) throws HotelNotFoundException{
         if(isHotelExists(dtoRoom.hotel().getId())){
@@ -32,7 +36,7 @@ public class RoomService {
     }
 
     public Boolean isHotelExists(Long hotelId){
-        return repository.existsById(hotelId);
+        return hotelrepository.existsById(hotelId);
     }
 
     public Room detailRoom(Long id) throws RoomNotFoundException {
@@ -65,5 +69,4 @@ public class RoomService {
         var room = repository.findById(id).orElseThrow(() -> new RoomNotFoundException());
         repository.delete(room);
     }
-
 }
