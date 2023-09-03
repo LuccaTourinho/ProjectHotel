@@ -1,8 +1,6 @@
 package com.Hotels_System.ProjectHotel.dto;
 
-import jakarta.validation.constraints.NotNull;
-
-public record DTOAdress(
+public record DTOAddress(
         String country,
         String state,
         String city
