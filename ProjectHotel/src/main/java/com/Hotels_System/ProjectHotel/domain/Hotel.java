@@ -1,12 +1,9 @@
 package com.Hotels_System.ProjectHotel.domain;
 
-import com.Hotels_System.ProjectHotel.dto.DTOHotel;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,15 +18,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Hotel extends PrimaryKey{
 
-    @Column(name = "Name", unique = true) @NotBlank @Size(max = 50)
+    @Column(name = "Name_hotel", unique = true)
     private String name;
 
-    @NotNull @Embedded
+    @Embedded
     private Address address;
 
-    @Embedded
+    @Column(name = "Quality") @Embedded
     private Quality quality;
 
-    @NotNull @Embedded
+    @Embedded
     private Contacts contacts;
 }
