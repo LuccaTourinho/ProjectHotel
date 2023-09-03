@@ -1,11 +1,11 @@
 package com.Hotels_System.ProjectHotel.dto;
 
-import com.Hotels_System.ProjectHotel.domain.Quality;
+import com.fasterxml.jackson.annotation.JsonAlias;
 
 public record DTOHotel(
-        String name,
-        DTOAddress address,
-        String quality,
-        DTOContacts contacts
+        @JsonAlias({"name"}) String name,
+        @JsonAlias({"address"}) DTOAddress address,
+        @JsonAlias({"quality"}) String quality,
+        @JsonAlias({"contacts"}) DTOContacts contacts
 ){
 }

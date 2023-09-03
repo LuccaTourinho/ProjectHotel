@@ -1,8 +1,10 @@
 package com.Hotels_System.ProjectHotel.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 public record DTOAddress(
-        String country,
-        String state,
-        String city
+        @JsonAlias({"country"}) String country,
+        @JsonAlias({"state"}) String state,
+        @JsonAlias({"city"}) String city
 ){
 }

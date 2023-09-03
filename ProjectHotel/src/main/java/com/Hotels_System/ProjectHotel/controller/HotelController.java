@@ -49,8 +49,8 @@ public class HotelController {
 
     @PutMapping("/update")
     public ResponseEntity<Hotel> updateHotel(@RequestBody @Valid DTOHotelUpdate dtoHotelUpdate) throws HotelNotFoundException{
-        var hotelAtualizado = service.updateHotel(dtoHotelUpdate);
-        return new ResponseEntity<>(hotelAtualizado, HttpStatus.OK);
+        var hotelupdated = service.updateHotel(dtoHotelUpdate);
+        return new ResponseEntity<>(hotelupdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

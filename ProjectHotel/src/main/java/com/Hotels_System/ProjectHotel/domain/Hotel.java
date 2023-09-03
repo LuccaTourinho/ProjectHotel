@@ -2,10 +2,12 @@ package com.Hotels_System.ProjectHotel.domain;
 
 import com.Hotels_System.ProjectHotel.dto.DTOHotel;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity(name = "hotel")
 @Table(name = "Hoteis")
@@ -17,7 +19,7 @@ public class Hotel {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "pk_ID")
     private Long id;
 
-    @Column(name = "Name_hotel", unique = true) @NotNull
+    @Column(name = "Name_hotel", unique = true) @NotBlank
     private String name;
 
     @Embedded
@@ -28,6 +30,9 @@ public class Hotel {
 
     @Embedded
     private Contacts contacts;
+
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
+    private List<Room> rooms;
 
     public Hotel(DTOHotel dtoHotel) {
         this.name = dtoHotel.name();

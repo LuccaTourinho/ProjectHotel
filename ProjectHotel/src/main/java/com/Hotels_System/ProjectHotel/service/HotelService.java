@@ -1,7 +1,5 @@
 package com.Hotels_System.ProjectHotel.service;
 
-import com.Hotels_System.ProjectHotel.domain.Address;
-import com.Hotels_System.ProjectHotel.domain.Contacts;
 import com.Hotels_System.ProjectHotel.domain.Hotel;
 import com.Hotels_System.ProjectHotel.dto.DTOHotel;
 import com.Hotels_System.ProjectHotel.dto.DTOHotelUpdate;

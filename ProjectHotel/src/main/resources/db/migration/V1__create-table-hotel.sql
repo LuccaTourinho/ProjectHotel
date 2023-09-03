@@ -1,6 +1,6 @@
 
 CREATE TABLE Hoteis (
-    pk_ID SERIAL PRIMARY KEY,
+    pk_ID BIGSERIAL PRIMARY KEY,
     Name_hotel VARCHAR(50) NOT NULL,
     Country VARCHAR(2) NOT NULL,
     State_code VARCHAR(2) NOT NULL,
