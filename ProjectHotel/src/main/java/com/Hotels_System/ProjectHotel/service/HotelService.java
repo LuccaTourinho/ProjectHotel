@@ -22,23 +22,8 @@ public class HotelService {
 
     @Transactional
     public Hotel register(DTOHotel dtoHotel){
-        var hotel = Hotel.builder()
-                .name(dtoHotel.nome())
-                .address(
-                        Address.builder()
-                                .country(dtoHotel.address().country())
-                                .state(dtoHotel.address().state())
-                                .city(dtoHotel.address().city())
-                                .build()
-                )
-                .quality(dtoHotel.quality())
-                .contacts(
-                        Contacts.builder()
-                                .email(dtoHotel.contacts().email())
-                                .phone(dtoHotel.contacts().phone())
-                                .build()
-                )
-                .build();
+        var hotel = new Hotel(dtoHotel);
+
 
         return repository.save(hotel);
     }
@@ -58,7 +43,7 @@ public class HotelService {
         var hotel = repository.findById(dtoHotelUpdate.id()).orElseThrow(() -> new HotelNotFoundException());
 
         HotelUpdater hotelUpdated = new HotelUpdater(hotel)
-                .name(dtoHotelUpdate.nome())
+                .name(dtoHotelUpdate.name())
                 .address(dtoHotelUpdate.address())
                 .quality(dtoHotelUpdate.quality())
                 .contacts(dtoHotelUpdate.contacts());

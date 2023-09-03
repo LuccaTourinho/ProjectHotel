@@ -1,5 +1,6 @@
 package com.Hotels_System.ProjectHotel.domain;
 
+import com.Hotels_System.ProjectHotel.dto.DTOAddress;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
@@ -11,7 +12,6 @@ import lombok.NoArgsConstructor;
 
 @Embeddable
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address{
@@ -24,4 +24,10 @@ public class Address{
 
     @Column(name = "City") @NotBlank
     private String city;
+
+    public Address(DTOAddress address) {
+        this.country = address.country();
+        this.state = address.state();
+        this.city = address.city();
+    }
 }

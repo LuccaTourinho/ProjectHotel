@@ -4,9 +4,9 @@ import com.Hotels_System.ProjectHotel.domain.Quality;
 
 public record DTOHotelUpdate(
         Long id,
-        String nome,
+        String name,
         DTOAddress address,
-        Quality quality,
+        String quality,
         DTOContacts contacts
 ){
 }

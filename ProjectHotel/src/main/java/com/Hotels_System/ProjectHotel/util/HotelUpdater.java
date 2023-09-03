@@ -33,10 +33,11 @@ public class HotelUpdater {
         return this;
     }
 
-    public HotelUpdater quality(Quality quality){
+    public HotelUpdater quality(String quality){
 
         if(quality != null){
-            hotel.setQuality(quality);
+            Quality qualityvalue = Quality.valueOf(quality);
+            hotel.setQuality(qualityvalue);
         }
         return this;
     }

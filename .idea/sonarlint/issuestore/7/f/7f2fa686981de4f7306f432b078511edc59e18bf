@@ -1,0 +1,3 @@
+
+j	java:S101"NRename this record name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÒûÀ¤8 °ËÆ¥1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷“»Ä8 °ËÆ¥1
