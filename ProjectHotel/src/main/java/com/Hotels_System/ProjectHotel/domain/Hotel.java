@@ -1,5 +1,6 @@
 package com.Hotels_System.ProjectHotel.domain;
 
+import com.Hotels_System.ProjectHotel.dto.DTOHotel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
