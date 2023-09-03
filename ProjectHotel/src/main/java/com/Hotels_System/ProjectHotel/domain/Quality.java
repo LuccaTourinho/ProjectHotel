@@ -3,7 +3,7 @@ package com.Hotels_System.ProjectHotel.domain;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public enum Quality {
+public enum Quality{
     ECONOMIC(100),
     STANDARD(250),
     PREMIUM(500),

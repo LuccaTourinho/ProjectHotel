@@ -6,9 +6,6 @@ import lombok.Data;
 @MappedSuperclass
 @Data
 public abstract class PrimaryKey {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_ID")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "pk_ID")
     private Long id;
 }

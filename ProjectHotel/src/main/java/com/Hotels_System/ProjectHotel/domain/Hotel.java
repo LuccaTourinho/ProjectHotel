@@ -6,6 +6,7 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,19 +21,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Hotel extends PrimaryKey{
 
-    @Column(name = "Name", unique = true)
-    @NotBlank
-    @Size(max = 50)
+    @Column(name = "Name", unique = true) @NotBlank @Size(max = 50)
     private String name;
 
-    @Column(name = "Address")
-    @NotBlank
-    @Embedded
+    @NotNull @Embedded
     private Address address;
 
     @Embedded
     private Quality quality;
 
-    @Embedded
+    @NotNull @Embedded
     private Contacts contacts;
 }

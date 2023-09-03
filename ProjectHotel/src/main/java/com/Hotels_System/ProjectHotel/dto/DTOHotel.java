@@ -7,5 +7,5 @@ public record DTOHotel(
         DTOAddress address,
         Quality quality,
         DTOContacts contacts
-        ) {
+){
 }

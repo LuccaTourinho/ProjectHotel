@@ -14,19 +14,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address {
+public class Address{
 
-    @Column(name = "Country")
-    @NotBlank
-    @Pattern(regexp = "^[A-Z]{2}$")
+    @Column(name = "Country") @NotBlank @Pattern(regexp = "^[A-Z]{2}$")
     private String country;
 
-    @Column(name = "State")
-    @NotBlank
-    @Pattern(regexp = "^[A-Z]{2}$")
+    @Column(name = "State") @NotBlank @Pattern(regexp = "^[A-Z]{2}$")
     private String state;
 
-    @Column(name = "City")
-    @NotBlank
+    @Column(name = "City") @NotBlank
     private String city;
 }

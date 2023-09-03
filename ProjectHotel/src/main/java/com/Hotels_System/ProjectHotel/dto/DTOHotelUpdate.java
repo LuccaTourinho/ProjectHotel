@@ -8,5 +8,5 @@ public record DTOHotelUpdate(
         DTOAddress address,
         Quality quality,
         DTOContacts contacts
-) {
+){
 }

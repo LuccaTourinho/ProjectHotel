@@ -15,15 +15,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contacts {
+public class Contacts{
 
-    @Column(name = "Email", unique = true)
-    @NotBlank
-    @Email
+    @Column(name = "Email", unique = true) @NotBlank @Email
     private String email;
 
-    @Column(name = "Telefone", unique = true)
-    @NotBlank
-    @Pattern(regexp = "\\+\\d{1,3} \\(\\d{1,3}\\) \\d{5}-\\d{4}")
+    @Column(name = "Telefone", unique = true) @NotBlank @Pattern(regexp = "\\+\\d{1,3} \\(\\d{1,3}\\) \\d{5}-\\d{4}")
     private String phone;
 }

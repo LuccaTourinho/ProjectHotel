@@ -4,5 +4,5 @@ public record DTOAddress(
         String country,
         String state,
         String city
-) {
+){
 }
