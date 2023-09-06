@@ -1,10 +1,2 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡¼Ç¬8Ş¢ÕÈ¥1
-f
-java:S1128"DRemove this unused import 'jakarta.validation.constraints.NotBlank'.(ÕØ¡Õøÿÿÿÿ8øÉéÈ¥1
-e
-java:S1128"CRemove this unused import 'jakarta.validation.constraints.NotNull'.(Àª•ıÿÿÿÿ8Î‚ãÈ¥1
-e
-java:S1128"CRemove this unused import 'jakarta.validation.constraints.Pattern'.(Îá˜ãúÿÿÿÿ8Î‚ãÈ¥1
-]
-java:S1128"@Remove this unused import 'jakarta.validation.constraints.Size'.(çÀ…Í8ùÉéÈ¥1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡¼Ç¬8Ãâêã¥1

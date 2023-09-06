@@ -2,3 +2,5 @@
 L
 java:S3740"/Provide the parametrized type for this generic.(¿’ï8ˆè¿Æ¥1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷“»Ä8‰è¿Æ¥1
+w
+java:S1128"URemove this unused import 'org.springframework.jdbc.support.MetaDataAccessException'.(İÆ¿“ÿÿÿÿÿ8³‰Ëæ¥1

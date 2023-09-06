@@ -1,9 +1,9 @@
 package com.Hotels_System.ProjectHotel.util;
 
-import com.Hotels_System.ProjectHotel.domain.Hotel;
-import com.Hotels_System.ProjectHotel.domain.Quality;
-import com.Hotels_System.ProjectHotel.dto.DTOAddress;
-import com.Hotels_System.ProjectHotel.dto.DTOContacts;
+import com.Hotels_System.ProjectHotel.domain.hotel.Hotel;
+import com.Hotels_System.ProjectHotel.domain.hotel.Quality;
+import com.Hotels_System.ProjectHotel.dto.address.DTOAddress;
+import com.Hotels_System.ProjectHotel.dto.contacts.DTOContacts;
 
 public class HotelUpdater {
 

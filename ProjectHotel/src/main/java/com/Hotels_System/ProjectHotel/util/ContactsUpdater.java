@@ -1,6 +1,6 @@
 package com.Hotels_System.ProjectHotel.util;
 
-import com.Hotels_System.ProjectHotel.domain.Contacts;
+import com.Hotels_System.ProjectHotel.domain.contacts.Contacts;
 
 public class ContactsUpdater {
 

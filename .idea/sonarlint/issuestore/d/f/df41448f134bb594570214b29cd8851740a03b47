@@ -1,0 +1,12 @@
+
+x
+java:S1488+"\Immediately return this expression instead of assigning it to the temporary variable "room".(èª¿(8¹–îè¥1
+J
+java:S5411"(Use a primitive boolean expression here.(üÚæËýÿÿÿÿ8¹–îè¥1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿà§çüÿÿÿÿ8º–îè¥1
+c
+java:S1612+"GReplace this lambda with method reference 'RoomNotFoundException::new'.(èª¿(8È–îè¥1
+i
+java:S16129"GReplace this lambda with method reference 'RoomNotFoundException::new'.(ÌˆûÃüÿÿÿÿ8Ê–îè¥1
+c
+java:S1612E"GReplace this lambda with method reference 'RoomNotFoundException::new'.(èª¿(8Ë–îè¥1

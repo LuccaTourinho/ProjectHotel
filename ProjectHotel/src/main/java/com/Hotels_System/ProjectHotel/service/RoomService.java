@@ -1,8 +1,9 @@
 package com.Hotels_System.ProjectHotel.service;
 
-import com.Hotels_System.ProjectHotel.domain.Room;
-import com.Hotels_System.ProjectHotel.dto.DTORoom;
-import com.Hotels_System.ProjectHotel.dto.DTORoomUpdate;
+import com.Hotels_System.ProjectHotel.domain.room.Room;
+import com.Hotels_System.ProjectHotel.dto.room.DTORoom;
+import com.Hotels_System.ProjectHotel.dto.room.DTORoomComplete;
+import com.Hotels_System.ProjectHotel.dto.room.DTORoomUpdate;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
 import com.Hotels_System.ProjectHotel.exception.RoomNotFoundException;
 import com.Hotels_System.ProjectHotel.repository.HotelRepository;
@@ -26,11 +27,14 @@ public class RoomService {
     private HotelRepository hotelrepository;
 
     @Transactional
-    public Room register(DTORoom dtoRoom) throws HotelNotFoundException{
-        if(isHotelExists(dtoRoom.hotel().getId())){
+    public DTORoomComplete register(DTORoom dtoRoom) throws HotelNotFoundException{
+        if(isHotelExists(dtoRoom.hotel().id())){
             var room = new Room(dtoRoom);
-            return repository.save(room);
-        }else{
+            var roomComplete = new DTORoomComplete(room);
+            repository.save(room);
+            return roomComplete;
+        }
+        else{
             throw new HotelNotFoundException();
         }
     }
@@ -39,21 +43,31 @@ public class RoomService {
         return hotelrepository.existsById(hotelId);
     }
 
-    public Room detailRoom(Long id) throws RoomNotFoundException {
+    public DTORoomComplete detailRoom(Long id) throws RoomNotFoundException {
         var room = repository.findById(id).orElseThrow(() -> new RoomNotFoundException());
-        return room;
+        var dtoRoomComplete = new DTORoomComplete(room);
+        return dtoRoomComplete;
     }
 
-    public Optional<Page<Room>> listRoomAvailable(Pageable pageable){
-        return repository.findByAvailableTrue(pageable);
+    public Page<DTORoomComplete> listRoomAvailable(Pageable pageable){
+        Page<Room> roomList = repository.findByAvailableTrue(pageable);
+        Page<DTORoomComplete> dtoRoomCompletes = roomList.map(this::convertToDTO);
+        return dtoRoomCompletes;
     }
 
-    public Optional<Page<Room>> listRoomNotAvailable(Pageable pageable) {
-        return repository.findByAvailableFalse(pageable);
+    public Page<DTORoomComplete> listRoomNotAvailable(Pageable pageable) {
+        Page<Room> roomList = repository.findByAvailableFalse(pageable);
+        Page<DTORoomComplete> dtoRoomCompletes = roomList.map(this::convertToDTO);
+        return dtoRoomCompletes;
+    }
+
+    private DTORoomComplete convertToDTO(Room room){
+        DTORoomComplete dtoRoomComplete = new DTORoomComplete(room);
+        return dtoRoomComplete;
     }
 
     @Transactional
-    public Room updateRoom(DTORoomUpdate dtoRoomUpdate) throws RoomNotFoundException{
+    public DTORoomComplete updateRoom(DTORoomUpdate dtoRoomUpdate) throws RoomNotFoundException{
         var room = repository.findById(dtoRoomUpdate.id()).orElseThrow(() -> new RoomNotFoundException());
 
         RoomUpdater roomUpdated = new RoomUpdater(room)
@@ -61,7 +75,9 @@ public class RoomService {
                 .number(dtoRoomUpdate.number())
                 .avalible(dtoRoomUpdate.available());
 
-        return repository.save(roomUpdated.finishUpdater());
+        repository.save(roomUpdated.finishUpdater());
+        DTORoomComplete dtoRoomComplete = new DTORoomComplete(roomUpdated.finishUpdater());
+        return dtoRoomComplete;
     }
 
     @Transactional

@@ -1,9 +1,9 @@
 package com.Hotels_System.ProjectHotel.controller;
 
 
-import com.Hotels_System.ProjectHotel.domain.Hotel;
-import com.Hotels_System.ProjectHotel.dto.DTOHotel;
-import com.Hotels_System.ProjectHotel.dto.DTOHotelUpdate;
+import com.Hotels_System.ProjectHotel.domain.hotel.Hotel;
+import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotel;
+import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotelComplete;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
 import com.Hotels_System.ProjectHotel.service.HotelService;
 import jakarta.validation.Valid;
@@ -36,19 +36,19 @@ public class HotelController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Hotel> detailHotel(@PathVariable Long id) throws HotelNotFoundException{
+    public ResponseEntity<DTOHotelComplete> detailHotel(@PathVariable Long id) throws HotelNotFoundException{
         var hotel = service.detailHotel(id);
         return ResponseEntity.ok(hotel);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<Page<Hotel>> listHotel(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
-        Page<Hotel> hotelPage = service.listHotels(pageable);
+    public ResponseEntity<Page<DTOHotelComplete>> listHotel(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+        Page<DTOHotelComplete> hotelPage = service.listHotels(pageable);
         return ResponseEntity.ok(hotelPage);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Hotel> updateHotel(@RequestBody @Valid DTOHotelUpdate dtoHotelUpdate) throws HotelNotFoundException{
+    public ResponseEntity<DTOHotelComplete> updateHotel(@RequestBody @Valid DTOHotelComplete dtoHotelUpdate) throws HotelNotFoundException{
         var hotelupdated = service.updateHotel(dtoHotelUpdate);
         return new ResponseEntity<>(hotelupdated, HttpStatus.OK);
     }

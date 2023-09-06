@@ -1,7 +1,7 @@
 package com.Hotels_System.ProjectHotel.util;
 
-import com.Hotels_System.ProjectHotel.domain.Capacity;
-import com.Hotels_System.ProjectHotel.domain.Room;
+import com.Hotels_System.ProjectHotel.domain.room.Capacity;
+import com.Hotels_System.ProjectHotel.domain.room.Room;
 
 public class RoomUpdater {
 

@@ -1,6 +1,6 @@
 package com.Hotels_System.ProjectHotel.util;
 
-import com.Hotels_System.ProjectHotel.domain.Address;
+import com.Hotels_System.ProjectHotel.domain.address.Address;
 
 public class AddressUpdater {
 

@@ -1,8 +1,8 @@
 package com.Hotels_System.ProjectHotel.service;
 
-import com.Hotels_System.ProjectHotel.domain.Hotel;
-import com.Hotels_System.ProjectHotel.dto.DTOHotel;
-import com.Hotels_System.ProjectHotel.dto.DTOHotelUpdate;
+import com.Hotels_System.ProjectHotel.domain.hotel.Hotel;
+import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotel;
+import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotelComplete;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
 import com.Hotels_System.ProjectHotel.repository.HotelRepository;
 import com.Hotels_System.ProjectHotel.util.HotelUpdater;
@@ -21,32 +21,36 @@ public class HotelService {
     @Transactional
     public Hotel register(DTOHotel dtoHotel){
         var hotel = new Hotel(dtoHotel);
-
-
         return repository.save(hotel);
     }
 
-    public Hotel detailHotel(Long id) throws HotelNotFoundException{
+    public DTOHotelComplete detailHotel(Long id) throws HotelNotFoundException{
         var hotel = repository.findById(id).orElseThrow(() -> new HotelNotFoundException());
-        return hotel;
+        var detailHotel = new DTOHotelComplete(hotel);
+        return detailHotel;
     }
 
-    public Page<Hotel> listHotels(Pageable pageable){
+    public Page<DTOHotelComplete> listHotels(Pageable pageable){
         Page<Hotel> hoteisPage = repository.findAll(pageable);
-        return hoteisPage;
+        Page<DTOHotelComplete> dtoHotelCompletePage = hoteisPage.map(this::convertToDTO);
+        return dtoHotelCompletePage;
+    }
+
+    private DTOHotelComplete convertToDTO(Hotel hotel) {
+        DTOHotelComplete dtoHotel = new DTOHotelComplete(hotel);
+        return dtoHotel;
     }
 
     @Transactional
-    public Hotel updateHotel(DTOHotelUpdate dtoHotelUpdate) throws HotelNotFoundException{
+    public DTOHotelComplete updateHotel(DTOHotelComplete dtoHotelUpdate) throws HotelNotFoundException{
         var hotel = repository.findById(dtoHotelUpdate.id()).orElseThrow(() -> new HotelNotFoundException());
-
         HotelUpdater hotelUpdated = new HotelUpdater(hotel)
                 .name(dtoHotelUpdate.name())
                 .address(dtoHotelUpdate.address())
                 .quality(dtoHotelUpdate.quality())
                 .contacts(dtoHotelUpdate.contacts());
-
-        return repository.save(hotelUpdated.finishUpdater());
+        repository.save(hotelUpdated.finishUpdater());
+        return new DTOHotelComplete(hotelUpdated.finishUpdater());
     }
 
     @Transactional

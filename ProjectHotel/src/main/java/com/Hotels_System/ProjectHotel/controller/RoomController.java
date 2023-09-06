@@ -1,11 +1,11 @@
 package com.Hotels_System.ProjectHotel.controller;
 
-import com.Hotels_System.ProjectHotel.domain.Room;
-import com.Hotels_System.ProjectHotel.dto.DTORoom;
-import com.Hotels_System.ProjectHotel.dto.DTORoomUpdate;
+import com.Hotels_System.ProjectHotel.domain.room.Room;
+import com.Hotels_System.ProjectHotel.dto.room.DTORoom;
+import com.Hotels_System.ProjectHotel.dto.room.DTORoomComplete;
+import com.Hotels_System.ProjectHotel.dto.room.DTORoomUpdate;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
 import com.Hotels_System.ProjectHotel.exception.RoomNotFoundException;
-import com.Hotels_System.ProjectHotel.repository.HotelRepository;
 import com.Hotels_System.ProjectHotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,35 +28,35 @@ public class RoomController {
     private RoomService service;
 
     @PostMapping("/register")
-    public ResponseEntity<Room> registerRoom(@RequestBody DTORoom dtoRoom, UriComponentsBuilder uriBuilder) throws HotelNotFoundException{
+    public ResponseEntity<DTORoomComplete> registerRoom(@RequestBody DTORoom dtoRoom, UriComponentsBuilder uriBuilder) throws HotelNotFoundException{
 
         var createdRoom = service.register(dtoRoom);
 
-        URI uri = uriBuilder.path("/rooms/get/{id}").buildAndExpand(createdRoom.getId()).toUri();
+        URI uri = uriBuilder.path("/rooms/get/{id}").buildAndExpand(createdRoom.id()).toUri();
 
         return ResponseEntity.created(uri).body(createdRoom);
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Room> getRoomDetails(@PathVariable Long id) throws RoomNotFoundException {
+    public ResponseEntity<DTORoomComplete> getRoomDetails(@PathVariable Long id) throws RoomNotFoundException {
         var room = service.detailRoom(id);
         return ResponseEntity.ok(room);
     }
 
     @GetMapping("/available")
-    public ResponseEntity<Page<Room>> listAvailableRooms(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.ASC)Pageable pageable) {
-        Optional<Page<Room>> availableRooms = service.listRoomAvailable(pageable);
-        return availableRooms.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Page<DTORoomComplete>> listAvailableRooms(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.ASC)Pageable pageable) {
+        Page<DTORoomComplete> availableRooms = service.listRoomAvailable(pageable);
+        return ResponseEntity.ok(availableRooms);
     }
 
     @GetMapping("/notavailable")
-    public ResponseEntity<Page<Room>> listNotAvailableRooms(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.ASC)Pageable pageable) {
-        Optional<Page<Room>> notAvailableRooms = service.listRoomNotAvailable(pageable);
-        return notAvailableRooms.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Page<DTORoomComplete>> listNotAvailableRooms(@PageableDefault(size = 20, sort = "id", direction = Sort.Direction.ASC)Pageable pageable) {
+        Page<DTORoomComplete> notAvailableRooms = service.listRoomNotAvailable(pageable);
+        return ResponseEntity.ok(notAvailableRooms);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Room> updateRoom(@RequestBody DTORoomUpdate dtoRoomUpdate) throws RoomNotFoundException {
+    public ResponseEntity<DTORoomComplete> updateRoom(@RequestBody DTORoomUpdate dtoRoomUpdate) throws RoomNotFoundException {
         var updatedRoom = service.updateRoom(dtoRoomUpdate);
         return new ResponseEntity<>(updatedRoom, HttpStatus.OK);
     }
