@@ -4,6 +4,7 @@ import com.Hotels_System.ProjectHotel.domain.hotel.Hotel;
 import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotel;
 import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotelComplete;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
+import com.Hotels_System.ProjectHotel.factory.HotelFactory;
 import com.Hotels_System.ProjectHotel.repository.HotelRepository;
 import com.Hotels_System.ProjectHotel.util.HotelUpdater;
 import jakarta.transaction.Transactional;
@@ -18,27 +19,23 @@ public class HotelService {
     @Autowired
     private HotelRepository repository;
 
+    @Autowired
+    private HotelFactory hotelFactory;
+
     @Transactional
     public Hotel register(DTOHotel dtoHotel){
-        var hotel = new Hotel(dtoHotel);
+        Hotel hotel = hotelFactory.convertDTOHotelToHotel(dtoHotel);
         return repository.save(hotel);
     }
 
     public DTOHotelComplete detailHotel(Long id) throws HotelNotFoundException{
         var hotel = repository.findById(id).orElseThrow(() -> new HotelNotFoundException());
-        var detailHotel = new DTOHotelComplete(hotel);
-        return detailHotel;
+        return hotelFactory.convertHotelToDTOComplete(hotel);
     }
 
     public Page<DTOHotelComplete> listHotels(Pageable pageable){
         Page<Hotel> hoteisPage = repository.findAll(pageable);
-        Page<DTOHotelComplete> dtoHotelCompletePage = hoteisPage.map(this::convertToDTO);
-        return dtoHotelCompletePage;
-    }
-
-    private DTOHotelComplete convertToDTO(Hotel hotel) {
-        DTOHotelComplete dtoHotel = new DTOHotelComplete(hotel);
-        return dtoHotel;
+        return hoteisPage.map(hotelFactory::convertHotelToDTOComplete);
     }
 
     @Transactional
@@ -50,7 +47,7 @@ public class HotelService {
                 .quality(dtoHotelUpdate.quality())
                 .contacts(dtoHotelUpdate.contacts());
         repository.save(hotelUpdated.finishUpdater());
-        return new DTOHotelComplete(hotelUpdated.finishUpdater());
+        return hotelFactory.convertHotelToDTOComplete(hotelUpdated.finishUpdater());
     }
 
     @Transactional
