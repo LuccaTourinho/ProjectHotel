@@ -11,4 +11,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     Page<Room> findByAvailableTrue(Pageable pageable);
 
     Page<Room> findByAvailableFalse(Pageable pageable);
+
+    Optional<Room> findByHotelIdAndNumber(Long hotelId, Integer roomNumber);
 }

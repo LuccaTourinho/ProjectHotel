@@ -5,9 +5,11 @@ import com.Hotels_System.ProjectHotel.dto.room.DTORoom;
 import com.Hotels_System.ProjectHotel.dto.room.DTORoomComplete;
 import com.Hotels_System.ProjectHotel.dto.room.DTORoomUpdate;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
+import com.Hotels_System.ProjectHotel.exception.HotelRoomNumberException;
 import com.Hotels_System.ProjectHotel.exception.RoomNotFoundException;
 import com.Hotels_System.ProjectHotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,7 +30,7 @@ public class RoomController {
     private RoomService service;
 
     @PostMapping("/register")
-    public ResponseEntity<DTORoomComplete> registerRoom(@RequestBody DTORoom dtoRoom, UriComponentsBuilder uriBuilder) throws HotelNotFoundException{
+    public ResponseEntity<DTORoomComplete> registerRoom(@RequestBody DTORoom dtoRoom, UriComponentsBuilder uriBuilder) throws HotelNotFoundException, DataIntegrityViolationException, HotelRoomNumberException {
 
         var createdRoom = service.register(dtoRoom);
 
@@ -56,7 +58,7 @@ public class RoomController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<DTORoomComplete> updateRoom(@RequestBody DTORoomUpdate dtoRoomUpdate) throws RoomNotFoundException {
+    public ResponseEntity<DTORoomComplete> updateRoom(@RequestBody DTORoomUpdate dtoRoomUpdate) throws RoomNotFoundException, DataIntegrityViolationException, HotelRoomNumberException {
         var updatedRoom = service.updateRoom(dtoRoomUpdate);
         return new ResponseEntity<>(updatedRoom, HttpStatus.OK);
     }

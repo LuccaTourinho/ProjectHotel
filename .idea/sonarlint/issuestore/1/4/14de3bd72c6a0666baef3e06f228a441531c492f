@@ -1,12 +1,14 @@
 
-z
-java:S1488"]Immediately return this expression instead of assigning it to the temporary variable "hotel".(é×õñ8™µáä¥1
-
-java:S1488#"bImmediately return this expression instead of assigning it to the temporary variable "hoteisPage".(˜•Åá8™µáä¥1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿà§çüÿÿÿÿ8šµáä¥1
+€
+java:S1488"cImmediately return this expression instead of assigning it to the temporary variable "detailHotel".(üÇŸ˜8µ—â½¦1
+
+java:S1488#"lImmediately return this expression instead of assigning it to the temporary variable "dtoHotelCompletePage".(Ö£úÿÿÿÿ8·—â½¦1
+‚
+java:S1488("`Immediately return this expression instead of assigning it to the temporary variable "dtoHotel".(È˜‡Ñùÿÿÿÿ8·—â½¦1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿà§çüÿÿÿÿ8¹—â½¦1
 e
-java:S1612"HReplace this lambda with method reference 'HotelNotFoundException::new'.(é×õñ8©µáä¥1
+java:S1612"HReplace this lambda with method reference 'HotelNotFoundException::new'.(é×õñ8Ï—â½¦1
 e
-java:S1612)"HReplace this lambda with method reference 'HotelNotFoundException::new'.(²á™’8«µáä¥1
+java:S1612."HReplace this lambda with method reference 'HotelNotFoundException::new'.(²á™’8Û—â½¦1
 e
-java:S16126"HReplace this lambda with method reference 'HotelNotFoundException::new'.(é×õñ8¯µáä¥1
+java:S1612:"HReplace this lambda with method reference 'HotelNotFoundException::new'.(é×õñ8ï—â½¦1

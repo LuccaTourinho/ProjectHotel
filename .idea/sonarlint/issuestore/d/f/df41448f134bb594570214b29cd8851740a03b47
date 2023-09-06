@@ -1,12 +1,22 @@
 
-x
-java:S1488+"\Immediately return this expression instead of assigning it to the temporary variable "room".(èª¿(8¹–îè¥1
+„
+java:S14880"gImmediately return this expression instead of assigning it to the temporary variable "dtoRoomComplete".(Á‹ëò8ÎÊø¿¦1
+…
+java:S14886"hImmediately return this expression instead of assigning it to the temporary variable "dtoRoomCompletes".(õÒ±Ï8ÎÊø¿¦1
+…
+java:S1488<"hImmediately return this expression instead of assigning it to the temporary variable "dtoRoomCompletes".(õÒ±Ï8ÎÊø¿¦1
+„
+java:S1488A"gImmediately return this expression instead of assigning it to the temporary variable "dtoRoomComplete".(ëß¿ª8ÎÊø¿¦1
+‰
+java:S1488O"gImmediately return this expression instead of assigning it to the temporary variable "dtoRoomComplete".(Ÿ¬„¿ùÿÿÿÿ8÷ÿø¿¦1
 J
-java:S5411"(Use a primitive boolean expression here.(üÚæËıÿÿÿÿ8¹–îè¥1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿà§çüÿÿÿÿ8º–îè¥1
+java:S5411"(Use a primitive boolean expression here.(Ìòã„şÿÿÿÿ8ÀÏ…À¦1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÿà§çüÿÿÿÿ8ÏÊø¿¦1
 c
-java:S1612+"GReplace this lambda with method reference 'RoomNotFoundException::new'.(èª¿(8È–îè¥1
+java:S1612/"GReplace this lambda with method reference 'RoomNotFoundException::new'.(èª¿(8ÙÊø¿¦1
 i
-java:S16129"GReplace this lambda with method reference 'RoomNotFoundException::new'.(ÌˆûÃüÿÿÿÿ8Ê–îè¥1
+java:S1612G"GReplace this lambda with method reference 'RoomNotFoundException::new'.(ÌˆûÃüÿÿÿÿ8ÜÊø¿¦1
 c
-java:S1612E"GReplace this lambda with method reference 'RoomNotFoundException::new'.(èª¿(8Ë–îè¥1
+java:S1612U"GReplace this lambda with method reference 'RoomNotFoundException::new'.(èª¿(8ßÊø¿¦1
+Q
+java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8äÏ…À¦1
