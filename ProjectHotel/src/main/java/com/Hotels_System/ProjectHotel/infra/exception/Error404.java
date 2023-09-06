@@ -1,4 +1,4 @@
-package com.Hotels_System.ProjectHotel.exception;
+package com.Hotels_System.ProjectHotel.infra.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

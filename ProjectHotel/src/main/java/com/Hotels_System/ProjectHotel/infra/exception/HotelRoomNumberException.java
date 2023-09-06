@@ -1,4 +1,4 @@
-package com.Hotels_System.ProjectHotel.exception;
+package com.Hotels_System.ProjectHotel.infra.exception;
 
 public class HotelRoomNumberException extends Exception {
     public HotelRoomNumberException(){

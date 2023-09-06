@@ -1,12 +1,11 @@
 package com.Hotels_System.ProjectHotel.controller;
 
-import com.Hotels_System.ProjectHotel.domain.room.Room;
 import com.Hotels_System.ProjectHotel.dto.room.DTORoom;
 import com.Hotels_System.ProjectHotel.dto.room.DTORoomComplete;
 import com.Hotels_System.ProjectHotel.dto.room.DTORoomUpdate;
-import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
-import com.Hotels_System.ProjectHotel.exception.HotelRoomNumberException;
-import com.Hotels_System.ProjectHotel.exception.RoomNotFoundException;
+import com.Hotels_System.ProjectHotel.infra.exception.HotelNotFoundException;
+import com.Hotels_System.ProjectHotel.infra.exception.HotelRoomNumberException;
+import com.Hotels_System.ProjectHotel.infra.exception.RoomNotFoundException;
 import com.Hotels_System.ProjectHotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/rooms")

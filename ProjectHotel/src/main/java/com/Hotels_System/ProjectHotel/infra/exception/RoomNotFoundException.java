@@ -1,4 +1,4 @@
-package com.Hotels_System.ProjectHotel.exception;
+package com.Hotels_System.ProjectHotel.infra.exception;
 
 public class RoomNotFoundException extends Exception {
     public RoomNotFoundException(){
