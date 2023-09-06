@@ -5,6 +5,7 @@ import com.Hotels_System.ProjectHotel.domain.hotel.Hotel;
 import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotel;
 import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotelComplete;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
+import com.Hotels_System.ProjectHotel.exception.HotelUniqueNameException;
 import com.Hotels_System.ProjectHotel.service.HotelService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class HotelController {
     private HotelService service;
 
     @PostMapping("/register")
-    public ResponseEntity<Hotel> register(@RequestBody @Valid DTOHotel dtoHotel, UriComponentsBuilder uriComponentsBuilder ){
+    public ResponseEntity<Hotel> register(@RequestBody @Valid DTOHotel dtoHotel, UriComponentsBuilder uriComponentsBuilder ) throws HotelUniqueNameException {
         var hotel = service.register(dtoHotel);
 
         URI uri = uriComponentsBuilder.path("/hotel/{id}").buildAndExpand(hotel.getId()).toUri();
@@ -48,7 +49,7 @@ public class HotelController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<DTOHotelComplete> updateHotel(@RequestBody @Valid DTOHotelComplete dtoHotelUpdate) throws HotelNotFoundException{
+    public ResponseEntity<DTOHotelComplete> updateHotel(@RequestBody @Valid DTOHotelComplete dtoHotelUpdate) throws HotelNotFoundException, HotelUniqueNameException{
         var hotelupdated = service.updateHotel(dtoHotelUpdate);
         return new ResponseEntity<>(hotelupdated, HttpStatus.OK);
     }

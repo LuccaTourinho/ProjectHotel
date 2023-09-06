@@ -3,6 +3,7 @@ package com.Hotels_System.ProjectHotel.factory;
 import com.Hotels_System.ProjectHotel.domain.room.Room;
 import com.Hotels_System.ProjectHotel.dto.room.DTORoom;
 import com.Hotels_System.ProjectHotel.dto.room.DTORoomComplete;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,7 +13,7 @@ public class RoomFactory {
             return room;
         }
 
-        public DTORoomComplete convertRoomToDTORoomComplete(Room room) {
+        public DTORoomComplete convertRoomToDTORoomComplete(@Valid Room room) {
             DTORoomComplete dtoRoomComplete = new DTORoomComplete(room);
             return dtoRoomComplete;
         }

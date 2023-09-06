@@ -4,9 +4,11 @@ import com.Hotels_System.ProjectHotel.domain.hotel.Hotel;
 import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotel;
 import com.Hotels_System.ProjectHotel.dto.Hotel.DTOHotelComplete;
 import com.Hotels_System.ProjectHotel.exception.HotelNotFoundException;
+import com.Hotels_System.ProjectHotel.exception.HotelUniqueNameException;
 import com.Hotels_System.ProjectHotel.factory.HotelFactory;
 import com.Hotels_System.ProjectHotel.repository.HotelRepository;
 import com.Hotels_System.ProjectHotel.util.HotelUpdater;
+import com.Hotels_System.ProjectHotel.validation.HotelUniqueNameValidation;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,8 +24,14 @@ public class HotelService {
     @Autowired
     private HotelFactory hotelFactory;
 
+    @Autowired
+    private HotelUniqueNameValidation hotelUniqueNameValidation;
+
     @Transactional
-    public Hotel register(DTOHotel dtoHotel){
+    public Hotel register(DTOHotel dtoHotel) throws HotelUniqueNameException {
+        if (!hotelUniqueNameValidation.isHotelNameUnique(dtoHotel.name())) {
+            throw new HotelUniqueNameException();
+        }
         Hotel hotel = hotelFactory.convertDTOHotelToHotel(dtoHotel);
         return repository.save(hotel);
     }
@@ -39,8 +47,11 @@ public class HotelService {
     }
 
     @Transactional
-    public DTOHotelComplete updateHotel(DTOHotelComplete dtoHotelUpdate) throws HotelNotFoundException{
+    public DTOHotelComplete updateHotel(DTOHotelComplete dtoHotelUpdate) throws HotelNotFoundException, HotelUniqueNameException{
         var hotel = repository.findById(dtoHotelUpdate.id()).orElseThrow(() -> new HotelNotFoundException());
+        if (!hotelUniqueNameValidation.isHotelNameUnique(dtoHotelUpdate.name())) {
+            throw new HotelUniqueNameException();
+        }
         HotelUpdater hotelUpdated = new HotelUpdater(hotel)
                 .name(dtoHotelUpdate.name())
                 .address(dtoHotelUpdate.address())

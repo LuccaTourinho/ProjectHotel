@@ -33,4 +33,11 @@ public class Error400 {
         error.put("message", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+
+    @ExceptionHandler({ HotelUniqueNameException.class })
+    public ResponseEntity<Object> treatHotelRoomNumberException(HotelUniqueNameException ex) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("message", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
 }
